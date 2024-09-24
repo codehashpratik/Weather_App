@@ -14,15 +14,14 @@ const Details = props => {
   const [data, setData] = useState('');
 
   useEffect(() => {
-async function test(){
-  console.log("kc")
-}
-
-test()
-    
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API_KEY}`,
+    )
+      .then(res => res.json())
+      .then(res => setData(res))
+      .catch(err => console.log(err));
   }, []);
 
- 
   return (
     <View
       style={{
